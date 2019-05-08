@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "bcrypt": "^3.0.6",
     "cors": "^2.8.5",

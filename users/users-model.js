@@ -4,7 +4,8 @@ module.exports = {
   getUsers,
   addUser,
   findBy,
-  find
+  find,
+  deleteUser
 }
 
 function getUsers () {
@@ -12,8 +13,8 @@ function getUsers () {
 }
 
 function addUser (user) {
-  return db.insert(user, 'id')
-    .into('users')
+  console.log('model', user)
+  return db('users').insert(user)
 }
 
 function findBy (user) {
@@ -22,4 +23,8 @@ function findBy (user) {
 
 function find () {
   return db('users')
+}
+
+function deleteUser (id) {
+  return db('users').where({ id }).delete()
 }
