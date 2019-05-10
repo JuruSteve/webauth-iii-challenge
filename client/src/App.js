@@ -1,12 +1,13 @@
 import React from 'react'
 import Login from './components/Login'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, withRouter } from 'react-router-dom'
 import './App.css'
 import users from './components/users'
 
 function App () {
   const logout = () => {
     localStorage.removeItem('token')
+    this.props.history.push('/')
   }
   return (
     <div className='App'>
@@ -28,4 +29,4 @@ function App () {
   )
 }
 
-export default App
+export default withRouter(App)
