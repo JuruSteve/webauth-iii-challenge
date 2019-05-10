@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Login from './components/Login'
+import { Route, NavLink } from 'react-router-dom'
+import './App.css'
+import users from './components/users'
 
-function App() {
+function App () {
+  const logout = () => {
+    localStorage.removeItem('token')
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div>
+        <nav>
+          <NavLink to='/'>
+      Home
+          </NavLink>
+          <div />
+          <NavLink to='/users'>
+      Users
+          </NavLink>
+          <button onClick={logout}>Logout</button>
+        </nav>
+      </div>
+      <Route exact path='/' component={Login} />
+      <Route exact path='/users' component={users} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
